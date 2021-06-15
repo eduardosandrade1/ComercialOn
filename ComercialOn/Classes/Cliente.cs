@@ -35,6 +35,13 @@ namespace ComercialOn.Classes
             // code para capturar infos no banco...
             return lista;
         }
+
+        public static List<Cliente> ListarComLimite(int limite)
+        {
+            List<Cliente> listaLimitada = new List<Cliente>();
+            return listaLimitada;
+        }
+
         // busca por id, mas não retorna os dados
         public void BuscarPorId(int id)
         {
