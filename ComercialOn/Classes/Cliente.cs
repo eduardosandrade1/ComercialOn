@@ -14,14 +14,14 @@ namespace ComercialOn.Classes
         public string Cpf { get; set; }
         public string Email { get; set; }
         public string Telefone { get; set; }
-        public Endereco Endereco { get; set; }
+        public List<Endereco> Endereco { get; set; }
         public bool Ativo { get; set; }
         // método contrutor tem o mesmo nome da classe
         public Cliente()
         {
         }
 
-        public Cliente(string nome, string cpf, string email, string telefone, bool ativo=true, Endereco endereco = null)
+        public Cliente(string nome, string cpf, string email, string telefone, bool ativo=true, List<Endereco> endereco = null)
         {
             Nome = nome;
             Cpf = cpf;
@@ -31,7 +31,7 @@ namespace ComercialOn.Classes
             Ativo = ativo;
         }
 
-        public Cliente(int id, string nome, string cpf, string email, string telefone, bool ativo=true, Endereco endereco=null)
+        public Cliente(int id, string nome, string cpf, string email, string telefone, bool ativo=true, List<Endereco> endereco=null)
         {
             Id = id;
             Nome = nome;
