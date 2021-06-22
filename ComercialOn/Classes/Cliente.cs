@@ -50,17 +50,18 @@ namespace ComercialOn.Classes
             // faz o processo de inserção no DB
             var comandosSql = Banco.Abrir();
             // métodos de inserção
+            if (comandosSql.Connection.State==ConnectionState.Open)
+            {
+                // concatenação
+                comandosSql.CommandType = CommandType.Text;
+                comandosSql.CommandText = "INSERT clientes(nome, email, cpf, telefone, ativo) VALUES('"+Nome+"', '"+Email+"', '"+Cpf+"', '"+Telefone+"', default);"; // prepare query
+                comandosSql.ExecuteNonQuery();// executa a query criada em command Text
+                comandosSql.CommandText = "select @@identity"; // retorna o id inserido
 
-            // concatenação
-            comandosSql.CommandType = CommandType.Text;
-            comandosSql.CommandText = "INSERT clientes(nome, email, cpf, telefone, ativo) VALUES('"+Nome+"', '"+Email+"', '"+Cpf+"', '"+Telefone+"', default);"; // prepare query
-
-            comandosSql.ExecuteNonQuery();// executa a query criada em command Text
-
-            comandosSql.CommandText = "select @@identity"; // retorna o id inserido
-            Id = Convert.ToInt32(comandosSql.ExecuteScalar()); // convertendo objeto retornado do banco em string
-            // após o cadastro do cliente, posso cadastrar o Endereço
-
+                Id = Convert.ToInt32(comandosSql.ExecuteScalar()); // convertendo objeto retornado do banco em string
+                // após o cadastro do cliente, posso cadastrar o Endereço
+                
+            }
 
             // expressões mysql
             // usando procedures
