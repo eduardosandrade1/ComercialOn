@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 
 namespace ComercialOn.Classes
 {
-    class Categoria
+    public class Categoria
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -26,5 +23,20 @@ namespace ComercialOn.Classes
         {
 
         }
+
+        public void Inserir()
+        {
+            var banco = Banco.Abrir();
+
+            banco.CommandType = CommandType.Text;
+            banco.CommandText = "INSERT  categorias (nome) VALUES ('" + Nome + "')";
+            // executando query no banco
+            banco.ExecuteNonQuery();
+            // recuperando o id inserido
+            banco.CommandText = @"select @@identity";
+            // e passando para propriedade da classe
+            Id = Convert.ToInt32(banco.ExecuteScalar());
+        }
+
     }
 }

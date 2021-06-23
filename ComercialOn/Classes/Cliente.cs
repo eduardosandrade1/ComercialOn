@@ -15,7 +15,7 @@ namespace ComercialOn.Classes
         public string Cpf { get; set; }
         public string Email { get; set; }
         public string Telefone { get; set; }
-        public List<Endereco> Endereco { get; set; }
+        public List<Endereco> Enderecos { get; set; }
         public bool Ativo { get; set; }
         // método contrutor tem o mesmo nome da classe
         public Cliente()
@@ -28,7 +28,7 @@ namespace ComercialOn.Classes
             Cpf = cpf;
             Email = email;
             Telefone = telefone;
-            Endereco = endereco;
+            Enderecos = endereco;
             Ativo = ativo;
         }
 
@@ -39,7 +39,7 @@ namespace ComercialOn.Classes
             Cpf = cpf;
             Email = email;
             Telefone = telefone;
-            Endereco = endereco;
+            Enderecos = endereco;
             Ativo = ativo;
         }
 
@@ -79,19 +79,26 @@ namespace ComercialOn.Classes
         public static List<Cliente> ListarTodos()
         {
             List<Cliente> lista = new List<Cliente>();
-            // code para capturar infos no banco...
+            string querySql = "SELECT * FROM clientes";
+            var banco = Banco.Abrir();
+            banco.CommandText = querySql;
+            var lendoDados = banco.ExecuteReader();
+
+            while (lendoDados.Read())
+            {
+                lista.Add(new Cliente(
+                    lendoDados.GetInt32(0),
+                    lendoDados.GetString(1),
+                    lendoDados.GetString(2),
+                    lendoDados.GetString(3),
+                    lendoDados.GetString(4),
+                    lendoDados.GetBoolean(5),
+                    Endereco.ListaEnderecos(lendoDados.GetInt32("id"))
+                    ));
+            }
+
             return lista;
         }
-
-
-        // recupera os clientes para listar, com limite
-        public static List<Cliente> ListarComLimite(int limite)
-        {
-            List<Cliente> listaLimitada = new List<Cliente>();
-            return listaLimitada;
-        }
-
-
 
         // busca por id, mas não retorna os dados
         public void BuscarPorId(int id)

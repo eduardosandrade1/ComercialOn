@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using ComercialOn.Classes;
+using ComercialOn.Formularios;
 
 namespace ComercialOn
 {
@@ -88,6 +89,40 @@ namespace ComercialOn
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void listarTodos_Click(object sender, EventArgs e)
+        {
+            var clientes = Cliente.ListarTodos();
+            listaClientes.Items.Clear();
+            foreach (var item in clientes)
+            {
+                foreach (var endereco in item.Enderecos)
+                {
+                    listaClientes.Items.Add(
+                            item.Nome + " - " +
+                            endereco.Logradouro
+                        );
+                }
+
+            }
+        }
+
+        private void listaClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRedirectCategoria_Click(object sender, EventArgs e)
+        {
+            FrmCategoria frmCategoria = new FrmCategoria();
+            frmCategoria.Show();
+        }
+
+        private void btnRedirectMarca_Click(object sender, EventArgs e)
+        {
+            FrmMarca frmMarca = new FrmMarca();
+            frmMarca.Show();
         }
     }
 }
