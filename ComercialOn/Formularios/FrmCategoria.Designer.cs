@@ -32,6 +32,8 @@
             this.txtNomeCategoria = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnCadastrarCategoria = new System.Windows.Forms.Button();
+            this.listCategorias = new System.Windows.Forms.ListBox();
+            this.btnListCategoria = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -46,37 +48,58 @@
             // 
             // txtNomeCategoria
             // 
-            this.txtNomeCategoria.Location = new System.Drawing.Point(194, 183);
+            this.txtNomeCategoria.Location = new System.Drawing.Point(63, 183);
             this.txtNomeCategoria.Name = "txtNomeCategoria";
-            this.txtNomeCategoria.Size = new System.Drawing.Size(469, 20);
+            this.txtNomeCategoria.Size = new System.Drawing.Size(270, 20);
             this.txtNomeCategoria.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label2.Location = new System.Drawing.Point(189, 146);
+            this.label2.Location = new System.Drawing.Point(58, 145);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(181, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Nome da Categoria";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // btnCadastrarCategoria
             // 
             this.btnCadastrarCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.btnCadastrarCategoria.Location = new System.Drawing.Point(194, 292);
+            this.btnCadastrarCategoria.Location = new System.Drawing.Point(63, 270);
             this.btnCadastrarCategoria.Name = "btnCadastrarCategoria";
-            this.btnCadastrarCategoria.Size = new System.Drawing.Size(469, 45);
+            this.btnCadastrarCategoria.Size = new System.Drawing.Size(376, 45);
             this.btnCadastrarCategoria.TabIndex = 3;
             this.btnCadastrarCategoria.Text = "Cadastrar";
             this.btnCadastrarCategoria.UseVisualStyleBackColor = true;
             this.btnCadastrarCategoria.Click += new System.EventHandler(this.btnCadastrarCategoria_Click);
+            // 
+            // listCategorias
+            // 
+            this.listCategorias.FormattingEnabled = true;
+            this.listCategorias.Location = new System.Drawing.Point(488, 155);
+            this.listCategorias.Name = "listCategorias";
+            this.listCategorias.Size = new System.Drawing.Size(260, 160);
+            this.listCategorias.TabIndex = 4;
+            // 
+            // btnListCategoria
+            // 
+            this.btnListCategoria.Location = new System.Drawing.Point(488, 126);
+            this.btnListCategoria.Name = "btnListCategoria";
+            this.btnListCategoria.Size = new System.Drawing.Size(260, 23);
+            this.btnListCategoria.TabIndex = 5;
+            this.btnListCategoria.Text = "Listar Categorias";
+            this.btnListCategoria.UseVisualStyleBackColor = true;
+            this.btnListCategoria.Click += new System.EventHandler(this.btnListCategoria_Click);
             // 
             // FrmCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnListCategoria);
+            this.Controls.Add(this.listCategorias);
             this.Controls.Add(this.btnCadastrarCategoria);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNomeCategoria);
@@ -94,5 +117,7 @@
         private System.Windows.Forms.TextBox txtNomeCategoria;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCadastrarCategoria;
+        private System.Windows.Forms.ListBox listCategorias;
+        private System.Windows.Forms.Button btnListCategoria;
     }
 }

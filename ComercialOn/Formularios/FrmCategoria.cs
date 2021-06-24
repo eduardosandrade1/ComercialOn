@@ -25,5 +25,22 @@ namespace ComercialOn.Formularios
             txtNomeCategoria.Text = "";
             MessageBox.Show("Categoria '"+categoria.Nome + "' inserida com sucesso! ");
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnListCategoria_Click(object sender, EventArgs e)
+        {
+            var categorias = Categoria.ListarTodas();
+            listCategorias.Items.Clear();
+            foreach (var item in categorias)
+            {
+                listCategorias.Items.Add(
+                    item.Nome
+                    );
+            }
+        }
     }
 }

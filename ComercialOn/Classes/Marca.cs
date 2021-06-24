@@ -43,6 +43,24 @@ namespace ComercialOn.Classes
         public static List<Marca> ListarTodas()
         {
             List<Marca> marcas = new List<Marca>();
+
+            string querySql = "SELECT * FROM marcas";
+
+            var banco = Banco.Abrir();
+
+            banco.CommandText = querySql;
+            var leitorDeDados = banco.ExecuteReader();
+
+            while (leitorDeDados.Read())
+            {
+                marcas.Add(new Marca(
+                    leitorDeDados.GetInt32("id"),
+                    leitorDeDados.GetString("descricao"),
+                    leitorDeDados.GetString("abreviacao")
+                    ));
+            }
+
+
             return marcas;
         }
     }

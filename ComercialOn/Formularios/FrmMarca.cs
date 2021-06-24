@@ -22,7 +22,13 @@ namespace ComercialOn.Formularios
 
         private void btnListarCategoria_Click(object sender, EventArgs e)
         {
-            Marca.ListarTodas();
+            listMarcas.Items.Clear();
+            var marcas = Marca.ListarTodas();
+            foreach (var item in marcas)
+            {
+                listMarcas.Items.Add(item.Descricao);
+            }
+            
         }
     }
 }
