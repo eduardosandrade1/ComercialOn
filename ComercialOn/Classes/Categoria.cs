@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using ComercialOn.Classes;
 
 namespace ComercialOn.Classes
 {
@@ -62,6 +63,33 @@ namespace ComercialOn.Classes
             }
 
             return categorias;
+        }
+
+        public bool Alterar()
+        {
+            var banco = Banco.Abrir();
+            banco.CommandText = "UPDATE categoria SET nome = "+ Nome +" WHERE " + Id;
+            var linhasUpdate = banco.ExecuteNonQuery();
+            if (linhasUpdate == 0)
+            {
+                return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// Busca os dados da categoria pelo ID e retorna nos atributos da classe 
+        /// </summary>
+        /// <param name="id">id que deseja pesquisar</param>
+        public void listarPorId(int id)
+        {
+            var banco = Banco.Abrir();
+            banco.CommandText = "SELECT * FROM categorias WHERE id = "+ id;
+            var lendoDados = banco.ExecuteReader();
+            while (lendoDados.Read())
+            {
+                Id = lendoDados.GetInt32("id");
+                Nome = lendoDados.GetString("nome");
+            }
         }
     }
 }

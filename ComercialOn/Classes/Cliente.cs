@@ -43,7 +43,6 @@ namespace ComercialOn.Classes
             Ativo = ativo;
         }
 
-
         // métodos da classe
         public void Inserir() 
         {
@@ -68,10 +67,23 @@ namespace ComercialOn.Classes
         }
 
 
-        public bool Alterar(int id, object list)
+        public bool Alterar()
         {
             // faz o processo de update
-            return true; // Apenas para o itelisence
+            var banco = Banco.Abrir();
+            banco.CommandText = "UPDATE clientes set nome = '"+Nome+"'," +
+                                                    " email = '"+Email+"'," +
+                                                    " telefone = '"+Telefone+"'," +
+                                                    " ativo = "+ Ativo +
+                                                    " WHERE id = "+Id;
+            int linhasRetornadas = banco.ExecuteNonQuery();
+            if (linhasRetornadas == 0)
+            {
+                return false;
+            }
+
+            return true;
+        
         }
 
 
@@ -103,7 +115,21 @@ namespace ComercialOn.Classes
         // busca por id, mas não retorna os dados
         public void BuscarPorId(int id)
         {
+            string querySql = "SELECT * FROM clientes WHERE id = "+ id;
+            var banco = Banco.Abrir();
+            banco.CommandText = querySql;
+            var lendoDados = banco.ExecuteReader();
 
+            while (lendoDados.Read())
+            {
+                Id = lendoDados.GetInt32("id");
+                Nome =lendoDados.GetString("nome");
+                Email = lendoDados.GetString("Email");
+                Cpf = lendoDados.GetString("cpf");
+                Telefone = lendoDados.GetString("telefone");
+                Ativo = lendoDados.GetBoolean("ativo");
+                Enderecos = Endereco.ListaEnderecos(id);
+            }
         }
     }
 }

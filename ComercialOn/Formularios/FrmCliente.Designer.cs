@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,22 +61,28 @@
             this.cmpTipo = new System.Windows.Forms.ComboBox();
             this.listarTodos = new System.Windows.Forms.Button();
             this.listaClientes = new System.Windows.Forms.ListBox();
-            this.btnRedirectCategoria = new System.Windows.Forms.Button();
-            this.btnRedirectMarca = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.txtIdBuscarCliente = new System.Windows.Forms.TextBox();
+            this.btnEditarAlterar = new System.Windows.Forms.Button();
+            this.btnListarClientes = new System.Windows.Forms.Button();
+            this.btnCancelarCliente = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.button1.BackColor = System.Drawing.Color.DodgerBlue;
             this.button1.Enabled = false;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.YellowGreen;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Beige;
+            this.button1.FlatAppearance.BorderSize = 0;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.button1.Location = new System.Drawing.Point(62, 578);
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.Location = new System.Drawing.Point(62, 508);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(943, 40);
+            this.button1.Size = new System.Drawing.Size(206, 40);
             this.button1.TabIndex = 0;
             this.button1.Text = "Inserir";
             this.button1.UseVisualStyleBackColor = false;
@@ -133,14 +140,14 @@
             this.txtNome.Location = new System.Drawing.Point(61, 33);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(416, 20);
-            this.txtNome.TabIndex = 8;
+            this.txtNome.TabIndex = 1;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(61, 59);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(416, 20);
-            this.txtEmail.TabIndex = 9;
+            this.txtEmail.TabIndex = 2;
             this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // label7
@@ -160,7 +167,7 @@
             this.chkAtivo.Location = new System.Drawing.Point(61, 144);
             this.chkAtivo.Name = "chkAtivo";
             this.chkAtivo.Size = new System.Drawing.Size(49, 17);
-            this.chkAtivo.TabIndex = 14;
+            this.chkAtivo.TabIndex = 5;
             this.chkAtivo.Text = "ativo";
             this.chkAtivo.UseVisualStyleBackColor = true;
             // 
@@ -170,7 +177,7 @@
             this.mskTel.Mask = "(99) 9 0000-0000";
             this.mskTel.Name = "mskTel";
             this.mskTel.Size = new System.Drawing.Size(416, 20);
-            this.mskTel.TabIndex = 15;
+            this.mskTel.TabIndex = 4;
             this.mskTel.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox1_MaskInputRejected);
             // 
             // mskCpf
@@ -179,7 +186,7 @@
             this.mskCpf.Mask = "000.000.000-00";
             this.mskCpf.Name = "mskCpf";
             this.mskCpf.Size = new System.Drawing.Size(416, 20);
-            this.mskCpf.TabIndex = 16;
+            this.mskCpf.TabIndex = 3;
             // 
             // groupBox1
             // 
@@ -411,33 +418,77 @@
             this.listaClientes.TabIndex = 20;
             this.listaClientes.SelectedIndexChanged += new System.EventHandler(this.listaClientes_SelectedIndexChanged);
             // 
-            // btnRedirectCategoria
+            // button2
             // 
-            this.btnRedirectCategoria.Location = new System.Drawing.Point(62, 515);
-            this.btnRedirectCategoria.Name = "btnRedirectCategoria";
-            this.btnRedirectCategoria.Size = new System.Drawing.Size(230, 23);
-            this.btnRedirectCategoria.TabIndex = 21;
-            this.btnRedirectCategoria.Text = "Cadastrar Categoria";
-            this.btnRedirectCategoria.UseVisualStyleBackColor = true;
-            this.btnRedirectCategoria.Click += new System.EventHandler(this.btnRedirectCategoria_Click);
+            this.button2.Location = new System.Drawing.Point(490, 79);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 23;
+            this.button2.Text = "...";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // btnRedirectMarca
+            // txtIdBuscarCliente
             // 
-            this.btnRedirectMarca.Location = new System.Drawing.Point(312, 515);
-            this.btnRedirectMarca.Name = "btnRedirectMarca";
-            this.btnRedirectMarca.Size = new System.Drawing.Size(254, 23);
-            this.btnRedirectMarca.TabIndex = 22;
-            this.btnRedirectMarca.Text = "Cadastrar Marca";
-            this.btnRedirectMarca.UseVisualStyleBackColor = true;
-            this.btnRedirectMarca.Click += new System.EventHandler(this.btnRedirectMarca_Click);
+            this.txtIdBuscarCliente.Enabled = false;
+            this.txtIdBuscarCliente.Location = new System.Drawing.Point(62, 81);
+            this.txtIdBuscarCliente.Name = "txtIdBuscarCliente";
+            this.txtIdBuscarCliente.ReadOnly = true;
+            this.txtIdBuscarCliente.Size = new System.Drawing.Size(422, 20);
+            this.txtIdBuscarCliente.TabIndex = 24;
+            // 
+            // btnEditarAlterar
+            // 
+            this.btnEditarAlterar.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnEditarAlterar.FlatAppearance.BorderColor = System.Drawing.Color.YellowGreen;
+            this.btnEditarAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.btnEditarAlterar.Location = new System.Drawing.Point(291, 508);
+            this.btnEditarAlterar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnEditarAlterar.Name = "btnEditarAlterar";
+            this.btnEditarAlterar.Size = new System.Drawing.Size(220, 40);
+            this.btnEditarAlterar.TabIndex = 25;
+            this.btnEditarAlterar.Text = "Editar";
+            this.btnEditarAlterar.UseVisualStyleBackColor = false;
+            this.btnEditarAlterar.Click += new System.EventHandler(this.btnEditarAlterar_Click);
+            // 
+            // btnListarClientes
+            // 
+            this.btnListarClientes.BackColor = System.Drawing.Color.Chocolate;
+            this.btnListarClientes.Enabled = false;
+            this.btnListarClientes.FlatAppearance.BorderColor = System.Drawing.Color.YellowGreen;
+            this.btnListarClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.btnListarClientes.Location = new System.Drawing.Point(549, 508);
+            this.btnListarClientes.Margin = new System.Windows.Forms.Padding(0);
+            this.btnListarClientes.Name = "btnListarClientes";
+            this.btnListarClientes.Size = new System.Drawing.Size(210, 40);
+            this.btnListarClientes.TabIndex = 26;
+            this.btnListarClientes.Text = "&Listar";
+            this.btnListarClientes.UseVisualStyleBackColor = false;
+            // 
+            // btnCancelarCliente
+            // 
+            this.btnCancelarCliente.BackColor = System.Drawing.Color.Crimson;
+            this.btnCancelarCliente.Enabled = false;
+            this.btnCancelarCliente.FlatAppearance.BorderColor = System.Drawing.Color.YellowGreen;
+            this.btnCancelarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.btnCancelarCliente.Location = new System.Drawing.Point(780, 508);
+            this.btnCancelarCliente.Margin = new System.Windows.Forms.Padding(0);
+            this.btnCancelarCliente.Name = "btnCancelarCliente";
+            this.btnCancelarCliente.Size = new System.Drawing.Size(225, 40);
+            this.btnCancelarCliente.TabIndex = 27;
+            this.btnCancelarCliente.Text = "Cancelar";
+            this.btnCancelarCliente.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1167, 645);
-            this.Controls.Add(this.btnRedirectMarca);
-            this.Controls.Add(this.btnRedirectCategoria);
+            this.Controls.Add(this.btnCancelarCliente);
+            this.Controls.Add(this.btnListarClientes);
+            this.Controls.Add(this.btnEditarAlterar);
+            this.Controls.Add(this.txtIdBuscarCliente);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.listaClientes);
             this.Controls.Add(this.listarTodos);
             this.Controls.Add(this.groupBox2);
@@ -448,9 +499,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -495,8 +545,11 @@
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.Button listarTodos;
         private System.Windows.Forms.ListBox listaClientes;
-        private System.Windows.Forms.Button btnRedirectCategoria;
-        private System.Windows.Forms.Button btnRedirectMarca;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txtIdBuscarCliente;
+        private System.Windows.Forms.Button btnEditarAlterar;
+        private System.Windows.Forms.Button btnListarClientes;
+        private System.Windows.Forms.Button btnCancelarCliente;
     }
 }
 

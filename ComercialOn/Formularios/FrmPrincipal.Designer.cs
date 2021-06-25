@@ -29,26 +29,29 @@
         private void InitializeComponent()
         {
             this.menuPrincipal = new System.Windows.Forms.MenuStrip();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsnCadastros = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmCadastroClientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmCadastroProdutos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmCadastroProdutosNovo = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmCadastroProdutosLista = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmCadastroUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.tsnOperacoes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsnMovimento = new System.Windows.Forms.ToolStripMenuItem();
             this.tsnRelatorio = new System.Windows.Forms.ToolStripMenuItem();
             this.tsnConfiguracoes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsnAjuda = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmCadastroClientes = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmCadastroProdutos = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmCadastroUsuarios = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmCadastroProdutosNovo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmCadastroProdutosLista = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrincipal.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuPrincipal
             // 
+            this.menuPrincipal.BackColor = System.Drawing.Color.Black;
             this.menuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsnCadastros,
             this.tsnOperacoes,
@@ -63,14 +66,6 @@
             this.menuPrincipal.Text = "menuStrip1";
             this.menuPrincipal.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 500);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1007, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
             // tsnCadastros
             // 
             this.tsnCadastros.AccessibleName = "";
@@ -78,40 +73,10 @@
             this.tsmCadastroClientes,
             this.tsmCadastroProdutos,
             this.tsmCadastroUsuarios});
+            this.tsnCadastros.ForeColor = System.Drawing.Color.White;
             this.tsnCadastros.Name = "tsnCadastros";
             this.tsnCadastros.Size = new System.Drawing.Size(71, 20);
             this.tsnCadastros.Text = "&Cadastros";
-            // 
-            // tsnOperacoes
-            // 
-            this.tsnOperacoes.Name = "tsnOperacoes";
-            this.tsnOperacoes.Size = new System.Drawing.Size(75, 20);
-            this.tsnOperacoes.Text = "&Operações";
-            // 
-            // tsnMovimento
-            // 
-            this.tsnMovimento.Name = "tsnMovimento";
-            this.tsnMovimento.Size = new System.Drawing.Size(81, 20);
-            this.tsnMovimento.Text = "&Movimento";
-            // 
-            // tsnRelatorio
-            // 
-            this.tsnRelatorio.Name = "tsnRelatorio";
-            this.tsnRelatorio.Size = new System.Drawing.Size(71, 20);
-            this.tsnRelatorio.Text = "&Relatórios";
-            // 
-            // tsnConfiguracoes
-            // 
-            this.tsnConfiguracoes.Name = "tsnConfiguracoes";
-            this.tsnConfiguracoes.Size = new System.Drawing.Size(96, 20);
-            this.tsnConfiguracoes.Text = "Con&figurações";
-            // 
-            // tsnAjuda
-            // 
-            this.tsnAjuda.Name = "tsnAjuda";
-            this.tsnAjuda.Size = new System.Drawing.Size(50, 20);
-            this.tsnAjuda.Text = "&Ajuda";
-            this.tsnAjuda.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
             // tsmCadastroClientes
             // 
@@ -124,16 +89,11 @@
             // 
             this.tsmCadastroProdutos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmCadastroProdutosNovo,
-            this.tsmCadastroProdutosLista});
+            this.tsmCadastroProdutosLista,
+            this.categoriasToolStripMenuItem});
             this.tsmCadastroProdutos.Name = "tsmCadastroProdutos";
             this.tsmCadastroProdutos.Size = new System.Drawing.Size(180, 22);
             this.tsmCadastroProdutos.Text = "&Produtos";
-            // 
-            // tsmCadastroUsuarios
-            // 
-            this.tsmCadastroUsuarios.Name = "tsmCadastroUsuarios";
-            this.tsmCadastroUsuarios.Size = new System.Drawing.Size(180, 22);
-            this.tsmCadastroUsuarios.Text = "&Usuários";
             // 
             // tsmCadastroProdutosNovo
             // 
@@ -148,8 +108,60 @@
             this.tsmCadastroProdutosLista.Size = new System.Drawing.Size(180, 22);
             this.tsmCadastroProdutosLista.Text = "&Lista";
             // 
+            // tsmCadastroUsuarios
+            // 
+            this.tsmCadastroUsuarios.Name = "tsmCadastroUsuarios";
+            this.tsmCadastroUsuarios.Size = new System.Drawing.Size(180, 22);
+            this.tsmCadastroUsuarios.Text = "&Usuários";
+            // 
+            // tsnOperacoes
+            // 
+            this.tsnOperacoes.ForeColor = System.Drawing.Color.White;
+            this.tsnOperacoes.Name = "tsnOperacoes";
+            this.tsnOperacoes.Size = new System.Drawing.Size(75, 20);
+            this.tsnOperacoes.Text = "&Operações";
+            // 
+            // tsnMovimento
+            // 
+            this.tsnMovimento.ForeColor = System.Drawing.Color.White;
+            this.tsnMovimento.Name = "tsnMovimento";
+            this.tsnMovimento.Size = new System.Drawing.Size(81, 20);
+            this.tsnMovimento.Text = "&Movimento";
+            // 
+            // tsnRelatorio
+            // 
+            this.tsnRelatorio.ForeColor = System.Drawing.Color.White;
+            this.tsnRelatorio.Name = "tsnRelatorio";
+            this.tsnRelatorio.Size = new System.Drawing.Size(71, 20);
+            this.tsnRelatorio.Text = "&Relatórios";
+            // 
+            // tsnConfiguracoes
+            // 
+            this.tsnConfiguracoes.ForeColor = System.Drawing.Color.White;
+            this.tsnConfiguracoes.Name = "tsnConfiguracoes";
+            this.tsnConfiguracoes.Size = new System.Drawing.Size(96, 20);
+            this.tsnConfiguracoes.Text = "Con&figurações";
+            // 
+            // tsnAjuda
+            // 
+            this.tsnAjuda.ForeColor = System.Drawing.Color.White;
+            this.tsnAjuda.Name = "tsnAjuda";
+            this.tsnAjuda.Size = new System.Drawing.Size(50, 20);
+            this.tsnAjuda.Text = "&Ajuda";
+            this.tsnAjuda.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.BackColor = System.Drawing.Color.Black;
+            this.statusStrip1.Location = new System.Drawing.Point(0, 500);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1007, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Black;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.closeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -162,10 +174,26 @@
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.closeToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.closeToolStripMenuItem.Text = "close";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(26, 20);
+            this.closeToolStripMenuItem.Text = "X";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
+            // categoriasToolStripMenuItem
+            // 
+            this.categoriasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadastrarToolStripMenuItem});
+            this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.categoriasToolStripMenuItem.Text = "Categorias";
+            // 
+            // cadastrarToolStripMenuItem
+            // 
+            this.cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
+            this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cadastrarToolStripMenuItem.Text = "Cadastrar";
+            this.cadastrarToolStripMenuItem.Click += new System.EventHandler(this.cadastrarToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -209,5 +237,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmCadastroProdutosLista;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadastrarToolStripMenuItem;
     }
 }

@@ -100,6 +100,7 @@ namespace ComercialOn
                 foreach (var endereco in item.Enderecos)
                 {
                     listaClientes.Items.Add(
+                            item.Id + " - " +
                             item.Nome + " - " +
                             endereco.Logradouro
                         );
@@ -123,6 +124,110 @@ namespace ComercialOn
         {
             FrmMarca frmMarca = new FrmMarca();
             frmMarca.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (button2.Text == "...")
+            {
+                txtIdBuscarCliente.Enabled = true;
+                txtIdBuscarCliente.ReadOnly = false;
+                txtIdBuscarCliente.Focus();
+                button2.Text = "Buscar";
+                bloquearControles();
+            }
+            else
+            {
+                txtIdBuscarCliente.Enabled = false;
+                txtIdBuscarCliente.ReadOnly = true;
+                button2.Text = "...";
+                desbloqueiarControles();
+                Cliente cliente = new Cliente();
+                if ((txtIdBuscarCliente.Text) != "")
+                {
+                    cliente.BuscarPorId(int.Parse(txtIdBuscarCliente.Text));
+                    if (cliente.Id > 0)
+                    {
+                        txtNome.Text = cliente.Nome;
+                        txtEmail.Text = cliente.Email;
+                        mskCpf.Text = cliente.Cpf;
+                        mskTel.Text = cliente.Telefone;
+                        chkAtivo.Checked = cliente.Ativo;
+                        mskCpf.Enabled = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Não há cliente com o ID "+txtIdBuscarCliente.Text);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Digite um ID para poder buscar! ");
+                    limpaDadosCliente();
+                    txtIdBuscarCliente.Focus();
+                }
+            }
+
+        }
+        /// <summary>
+        /// Limpa todos os campos de cadastro do cliente
+        /// </summary>
+        private void limpaDadosCliente()
+        {
+            txtIdBuscarCliente.Clear();
+            txtNome.Clear();
+            txtEmail.Clear();
+            mskCpf.Clear();
+            mskTel.Clear();
+            chkAtivo.Checked = false;
+        }
+        private void bloquearControles()
+        {
+            txtNome.Enabled = false;
+            txtEmail.Enabled = false;
+            mskCpf.Enabled = false;
+            mskTel.Enabled = false;
+            chkAtivo.Enabled = false;
+        }
+        private void desbloqueiarControles()
+        {
+            txtNome.Enabled = true;
+            txtEmail.Enabled = true;
+            mskCpf.Enabled = true;
+            mskTel.Enabled = true;
+            chkAtivo.Enabled = true;
+        }
+
+        private void btnEditarAlterar_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = new Cliente();
+            cliente.Id = int.Parse(txtIdBuscarCliente.Text);
+            cliente.Nome = txtNome.Text;
+            cliente.Email = txtEmail.Text;
+            cliente.Telefone = mskTel.Text;
+            cliente.Ativo = chkAtivo.Checked;
+            
+            if (cliente.Alterar())
+            {
+                MessageBox.Show("Cliente atualizado com sucesso!");
+            }
+            else
+            {
+                MessageBox.Show("Não foi possível atualizar o Cliente!");
+            }
+        }
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+
+            if (e.KeyValue >= 48 && e.KeyValue <= 57 || e.KeyValue == 44 || e.KeyValue == 46)
+            {
+                e.SuppressKeyPress = false;
+            }
+            else
+            {
+                e.SuppressKeyPress = true;
+            }
+
         }
     }
 }

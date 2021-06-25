@@ -34,6 +34,9 @@
             this.btnCadastrarCategoria = new System.Windows.Forms.Button();
             this.listCategorias = new System.Windows.Forms.ListBox();
             this.btnListCategoria = new System.Windows.Forms.Button();
+            this.btnEditarCategoria = new System.Windows.Forms.Button();
+            this.btnPesquisarCategoria = new System.Windows.Forms.Button();
+            this.txtBuscaIdCategoria = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -50,7 +53,7 @@
             // 
             this.txtNomeCategoria.Location = new System.Drawing.Point(63, 183);
             this.txtNomeCategoria.Name = "txtNomeCategoria";
-            this.txtNomeCategoria.Size = new System.Drawing.Size(270, 20);
+            this.txtNomeCategoria.Size = new System.Drawing.Size(342, 20);
             this.txtNomeCategoria.TabIndex = 1;
             // 
             // label2
@@ -69,7 +72,7 @@
             this.btnCadastrarCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.btnCadastrarCategoria.Location = new System.Drawing.Point(63, 270);
             this.btnCadastrarCategoria.Name = "btnCadastrarCategoria";
-            this.btnCadastrarCategoria.Size = new System.Drawing.Size(376, 45);
+            this.btnCadastrarCategoria.Size = new System.Drawing.Size(152, 32);
             this.btnCadastrarCategoria.TabIndex = 3;
             this.btnCadastrarCategoria.Text = "Cadastrar";
             this.btnCadastrarCategoria.UseVisualStyleBackColor = true;
@@ -93,11 +96,43 @@
             this.btnListCategoria.UseVisualStyleBackColor = true;
             this.btnListCategoria.Click += new System.EventHandler(this.btnListCategoria_Click);
             // 
+            // btnEditarCategoria
+            // 
+            this.btnEditarCategoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.btnEditarCategoria.Location = new System.Drawing.Point(253, 270);
+            this.btnEditarCategoria.Name = "btnEditarCategoria";
+            this.btnEditarCategoria.Size = new System.Drawing.Size(152, 32);
+            this.btnEditarCategoria.TabIndex = 6;
+            this.btnEditarCategoria.Text = "Editar";
+            this.btnEditarCategoria.UseVisualStyleBackColor = true;
+            this.btnEditarCategoria.Click += new System.EventHandler(this.btnEditarCategoria_Click);
+            // 
+            // btnPesquisarCategoria
+            // 
+            this.btnPesquisarCategoria.Location = new System.Drawing.Point(330, 98);
+            this.btnPesquisarCategoria.Name = "btnPesquisarCategoria";
+            this.btnPesquisarCategoria.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisarCategoria.TabIndex = 7;
+            this.btnPesquisarCategoria.Text = "...";
+            this.btnPesquisarCategoria.UseVisualStyleBackColor = true;
+            this.btnPesquisarCategoria.Click += new System.EventHandler(this.btnPesquisarCategoria_Click);
+            // 
+            // txtBuscaIdCategoria
+            // 
+            this.txtBuscaIdCategoria.Enabled = false;
+            this.txtBuscaIdCategoria.Location = new System.Drawing.Point(224, 98);
+            this.txtBuscaIdCategoria.Name = "txtBuscaIdCategoria";
+            this.txtBuscaIdCategoria.Size = new System.Drawing.Size(100, 20);
+            this.txtBuscaIdCategoria.TabIndex = 8;
+            // 
             // FrmCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtBuscaIdCategoria);
+            this.Controls.Add(this.btnPesquisarCategoria);
+            this.Controls.Add(this.btnEditarCategoria);
             this.Controls.Add(this.btnListCategoria);
             this.Controls.Add(this.listCategorias);
             this.Controls.Add(this.btnCadastrarCategoria);
@@ -119,5 +154,8 @@
         private System.Windows.Forms.Button btnCadastrarCategoria;
         private System.Windows.Forms.ListBox listCategorias;
         private System.Windows.Forms.Button btnListCategoria;
+        private System.Windows.Forms.Button btnEditarCategoria;
+        private System.Windows.Forms.Button btnPesquisarCategoria;
+        private System.Windows.Forms.TextBox txtBuscaIdCategoria;
     }
 }
