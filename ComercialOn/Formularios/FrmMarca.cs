@@ -30,5 +30,21 @@ namespace ComercialOn.Formularios
             }
             
         }
+
+        private void btnEditarMarca_Click(object sender, EventArgs e)
+        {
+            Marca marca = new Marca();
+            marca.Id = 0;
+        }
+
+        private void btnPesquisarMarca_Click(object sender, EventArgs e)
+        {
+            if (btnPesquisarMarca.Text.Trim() != "")
+            {
+                Marca marca = new Marca();
+                marca.Id = int.Parse(txtBuscarMarca.Text);
+                Marca.ListarPorId(marca.Id);
+            }
+        }
     }
 }

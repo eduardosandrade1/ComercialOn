@@ -36,11 +36,14 @@
             this.btnCadastrarMarca = new System.Windows.Forms.Button();
             this.btnListarMarcas = new System.Windows.Forms.Button();
             this.listMarcas = new System.Windows.Forms.ListBox();
+            this.btnEditarMarca = new System.Windows.Forms.Button();
+            this.txtBuscarMarca = new System.Windows.Forms.TextBox();
+            this.btnPesquisarMarca = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtNomeMarca
             // 
-            this.txtNomeMarca.Location = new System.Drawing.Point(148, 150);
+            this.txtNomeMarca.Location = new System.Drawing.Point(148, 188);
             this.txtNomeMarca.Name = "txtNomeMarca";
             this.txtNomeMarca.Size = new System.Drawing.Size(332, 20);
             this.txtNomeMarca.TabIndex = 0;
@@ -57,7 +60,7 @@
             // 
             // txtAbreviacao
             // 
-            this.txtAbreviacao.Location = new System.Drawing.Point(185, 196);
+            this.txtAbreviacao.Location = new System.Drawing.Point(185, 234);
             this.txtAbreviacao.Name = "txtAbreviacao";
             this.txtAbreviacao.Size = new System.Drawing.Size(100, 20);
             this.txtAbreviacao.TabIndex = 2;
@@ -66,7 +69,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label2.Location = new System.Drawing.Point(80, 150);
+            this.label2.Location = new System.Drawing.Point(80, 188);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 24);
             this.label2.TabIndex = 3;
@@ -76,7 +79,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.label3.Location = new System.Drawing.Point(80, 196);
+            this.label3.Location = new System.Drawing.Point(80, 234);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(105, 24);
             this.label3.TabIndex = 4;
@@ -87,7 +90,7 @@
             this.btnCadastrarMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.btnCadastrarMarca.Location = new System.Drawing.Point(84, 277);
             this.btnCadastrarMarca.Name = "btnCadastrarMarca";
-            this.btnCadastrarMarca.Size = new System.Drawing.Size(396, 51);
+            this.btnCadastrarMarca.Size = new System.Drawing.Size(177, 34);
             this.btnCadastrarMarca.TabIndex = 5;
             this.btnCadastrarMarca.Text = "Cadastrar";
             this.btnCadastrarMarca.UseVisualStyleBackColor = true;
@@ -111,11 +114,42 @@
             this.listMarcas.Size = new System.Drawing.Size(235, 134);
             this.listMarcas.TabIndex = 8;
             // 
+            // btnEditarMarca
+            // 
+            this.btnEditarMarca.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.btnEditarMarca.Location = new System.Drawing.Point(303, 277);
+            this.btnEditarMarca.Name = "btnEditarMarca";
+            this.btnEditarMarca.Size = new System.Drawing.Size(177, 34);
+            this.btnEditarMarca.TabIndex = 9;
+            this.btnEditarMarca.Text = "Editar";
+            this.btnEditarMarca.UseVisualStyleBackColor = true;
+            this.btnEditarMarca.Click += new System.EventHandler(this.btnEditarMarca_Click);
+            // 
+            // txtBuscarMarca
+            // 
+            this.txtBuscarMarca.Location = new System.Drawing.Point(289, 124);
+            this.txtBuscarMarca.Name = "txtBuscarMarca";
+            this.txtBuscarMarca.Size = new System.Drawing.Size(81, 20);
+            this.txtBuscarMarca.TabIndex = 10;
+            // 
+            // btnPesquisarMarca
+            // 
+            this.btnPesquisarMarca.Location = new System.Drawing.Point(376, 121);
+            this.btnPesquisarMarca.Name = "btnPesquisarMarca";
+            this.btnPesquisarMarca.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisarMarca.TabIndex = 11;
+            this.btnPesquisarMarca.Text = "...";
+            this.btnPesquisarMarca.UseVisualStyleBackColor = true;
+            this.btnPesquisarMarca.Click += new System.EventHandler(this.btnPesquisarMarca_Click);
+            // 
             // FrmMarca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnPesquisarMarca);
+            this.Controls.Add(this.txtBuscarMarca);
+            this.Controls.Add(this.btnEditarMarca);
             this.Controls.Add(this.listMarcas);
             this.Controls.Add(this.btnListarMarcas);
             this.Controls.Add(this.btnCadastrarMarca);
@@ -141,5 +175,8 @@
         private System.Windows.Forms.Button btnCadastrarMarca;
         private System.Windows.Forms.Button btnListarMarcas;
         private System.Windows.Forms.ListBox listMarcas;
+        private System.Windows.Forms.Button btnEditarMarca;
+        private System.Windows.Forms.TextBox txtBuscarMarca;
+        private System.Windows.Forms.Button btnPesquisarMarca;
     }
 }

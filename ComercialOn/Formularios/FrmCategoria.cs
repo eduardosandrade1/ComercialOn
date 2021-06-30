@@ -20,10 +20,18 @@ namespace ComercialOn.Formularios
 
         private void btnCadastrarCategoria_Click(object sender, EventArgs e)
         {
-            Categoria categoria = new Categoria(txtNomeCategoria.Text);
-            categoria.Inserir();
-            txtNomeCategoria.Text = "";
-            MessageBox.Show("Categoria '"+categoria.Nome + "' inserida com sucesso! ");
+            if ((txtNomeCategoria.Text).Trim() != "")
+            {
+                Categoria categoria = new Categoria(txtNomeCategoria.Text);
+                categoria.Inserir();
+                txtNomeCategoria.Text = "";
+                MessageBox.Show("Categoria '" + categoria.Nome + "' inserida com sucesso! ");
+            }
+            else
+            {
+                MessageBox.Show("Não é possível inserir um valor Vazio");
+            }
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -39,59 +47,95 @@ namespace ComercialOn.Formularios
             {
                 listCategorias.Items.Add(
                     item.Nome
-                    );
+                );
             }
         }
 
         private void btnPesquisarCategoria_Click(object sender, EventArgs e)
         {
             Categoria categoria = new Categoria();
-            if (txtNomeCategoria.Text == "...")
+            if (btnPesquisarCategoria.Text == "...")
             {
-                btnCadastrarCategoria.Text = "Pesquisar";
+                btnPesquisarCategoria.Text = "Pesquisar";
                 txtBuscaIdCategoria.Enabled = true;
-                if (txtBuscaIdCategoria.Text != "")
+                bloqueiaTodosInputs();
+            }
+            else
+            {
+                btnPesquisarCategoria.Text = "...";
+                txtBuscaIdCategoria.Enabled = false;
+                if ((txtBuscaIdCategoria.Text).Trim() != "")
                 {
-                    categoria.Id = int.Parse(txtBuscaIdCategoria.Text);
-                    categoria.Nome = txtNomeCategoria.Text;
-                    categoria.listarPorId(categoria.Id);
+                    categoria.listarPorId(int.Parse(txtBuscaIdCategoria.Text));
+                    if (categoria.Id > 0)
+                    {
+                        txtBuscaIdCategoria.Text = (categoria.Id).ToString();
+                        txtNomeCategoria.Text = categoria.Nome;
+                        btnCadastrarCategoria.Enabled = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Não existe este ID cadastrado! ");
+                        btnCadastrarCategoria.Enabled = true;
+                        txtNomeCategoria.Focus();
+                        limpaCampos();
+                    }
+                    desbloquearTodosInputs();
                 }
                 else
                 {
                     MessageBox.Show("Por favor, digite um ID para Pesquisar!");
+                    limpaCampos();
                 }
-            }
-            else
-            {
-                btnCadastrarCategoria.Text = "...";
-                txtBuscaIdCategoria.Enabled = false;
             }
 
         }
-
+        /// <summary>
+        /// Bloqueia os campos de entrada do formulário de categorias
+        /// </summary>
+        private void bloqueiaTodosInputs()
+        {
+            txtNomeCategoria.Enabled = false;
+            btnCadastrarCategoria.Enabled = false;
+        }
+        /// <summary>
+        /// DESbloqueia os campos de entrada do formulário de categorias
+        /// </summary>
+        private void desbloquearTodosInputs()
+        {
+            txtNomeCategoria.Enabled = true;
+            btnCadastrarCategoria.Enabled = true;
+        }
+        /// <summary>
+        /// Limpa todos os campos do formulário de categoria
+        /// </summary>
+        private void limpaCampos()
+        {
+            txtNomeCategoria.Clear();
+            txtBuscaIdCategoria.Clear();
+        }
         private void btnEditarCategoria_Click(object sender, EventArgs e)
         {
             Categoria categoria = new Categoria();
-            if (txtNomeCategoria.Text == "...")
+            if ((txtBuscaIdCategoria.Text).Trim() != "")
             {
-                btnCadastrarCategoria.Text = "Pesquisar";
-                txtBuscaIdCategoria.Enabled = true;
-                if (txtBuscaIdCategoria.Text != "")
+                categoria.Id = int.Parse(txtBuscaIdCategoria.Text);
+                categoria.Nome = txtNomeCategoria.Text;
+
+                if (categoria.Alterar())
                 {
-                    categoria.Id = int.Parse(txtBuscaIdCategoria.Text);
-                    categoria.Nome = txtNomeCategoria.Text;
-                    categoria.Alterar();
-                }
-                else
-                {
-                    MessageBox.Show("Por favor, digite um ID para Pesquisar!");
+                    MessageBox.Show("Categoria atualizada com sucesso! ");
+                    limpaCampos();
                 }
             }
             else
             {
-                btnCadastrarCategoria.Text = "...";
-                txtBuscaIdCategoria.Enabled = false;
+                valoresVazios();
             }
+        }
+        private void valoresVazios()
+        {
+            MessageBox.Show("Não é possível inserir um valor Vazio");
         }
     }
 }

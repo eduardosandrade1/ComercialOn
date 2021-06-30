@@ -68,7 +68,7 @@ namespace ComercialOn.Classes
         public bool Alterar()
         {
             var banco = Banco.Abrir();
-            banco.CommandText = "UPDATE categoria SET nome = "+ Nome +" WHERE " + Id;
+            banco.CommandText = "UPDATE categorias SET nome = '"+ Nome +"' WHERE id = " + Id;
             var linhasUpdate = banco.ExecuteNonQuery();
             if (linhasUpdate == 0)
             {

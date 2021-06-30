@@ -63,5 +63,30 @@ namespace ComercialOn.Classes
 
             return marcas;
         }
+
+        public static void ListarPorId(int id)
+        {
+            var banco = Banco.Abrir();
+            banco.CommandText = "SELECT * FROM marcas WHERE id = " + id;
+            var lendoDados = banco.ExecuteReader();
+            while (lendoDados.Read())
+            {
+                //Id = lendoDados.GetInt32("id");
+                //Descricao = lendoDados.GetString("descricao");
+                //Abreviacao = lendoDados.GetString("abreviacao");
+            }
+        }
+
+        public bool Alterar()
+        {
+            var banco = Banco.Abrir();
+            banco.CommandText = "UPDATE marcas SET descricao = '"+Descricao+"' , abreviacao =  '"+Abreviacao+"' WHERE id = "+Id;
+            var retornQuery = banco.ExecuteNonQuery();
+            if (retornQuery == 0)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

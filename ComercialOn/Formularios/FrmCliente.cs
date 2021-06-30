@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using ComercialOn.Classes;
@@ -40,17 +42,62 @@ namespace ComercialOn
 
         private void button1_Click(object sender, EventArgs e)
         {
-            mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;// formata o campo para o banco de dados (sem . e -)
+            if (verificaCamposCliente())
+            {
+                mskCpf.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;// formata o campo para o banco de dados (sem . e -)
 
-            Cliente cliente = new Cliente(txtNome.Text, mskCpf.Text, txtEmail.Text, mskTel.Text);
-            cliente.Inserir();
-            Endereco enderecoCliente = new Endereco(txtLogradouro.Text,txtNumero.Text,txtCep.Text,txtBairro.Text, txtCidade.Text, cmpTipo.Text, cmbEstado.Text, txtComplemento.Text);
-            enderecoCliente.Inserir(cliente.Id);
-            MessageBox.Show("Cliente "+cliente.Id+" inserido com sucesso");
+                Cliente cliente = new Cliente(txtNome.Text, mskCpf.Text, txtEmail.Text, mskTel.Text);
+                cliente.Inserir();
+                if (verificaCamposEndereco())
+                {
+                    Endereco enderecoCliente = new Endereco(txtLogradouro.Text,txtNumero.Text,txtCep.Text,txtBairro.Text, txtCidade.Text, cmpTipo.Text, cmbEstado.Text, txtComplemento.Text);
+                    enderecoCliente.Inserir(cliente.Id);
+                    MessageBox.Show("Cliente " + cliente.Id + " inserido com sucesso");
+                    btnListarClientes_Click(sender, e);
+                }
+            }
+
 
 
         }
+        /// <summary>
+        /// Método que verifica se os campos obrigatórios para cadastrar um cliente estão vazios
+        /// </summary>
+        /// <returns>retorna true caso os campos estejam preenchidos, false caso estejam vazios</returns>
+        private bool verificaCamposCliente()
+        {
+            if (txtNome.Text.Trim() == "" || txtEmail.Text.Trim() == "")
+            {
+                if (txtNome.Text.Trim() == "")
+                {
+                    txtNome.Focus();
+                }
+                else
+                {
+                    txtEmail.Focus();
+                }
 
+                MessageBox.Show("Há campos obrigatórios não preenchidos!");
+                return false;
+
+            }
+            return true; // libera
+        }
+
+        /// <summary>
+        /// Método que verifica se os campos de endereço estão preenchidos. Se faltar um dos obrigatórios, ele não insere
+        /// </summary>
+        /// <returns>true se todos os campos obrigatórios forem preenchidos, false se pelo menos um estiver vazio</returns>
+        private bool verificaCamposEndereco()
+        {
+            // se tiver pelo menos um campo obrigarório vazio, não insere o endereço
+            if (txtLogradouro.Text.Trim() == "" || txtNumero.Text.Trim() == "" || txtCep.Text.Trim() == "" || txtBairro.Text.Trim() == "" || txtCidade.Text.Trim() == "")
+            {
+                MessageBox.Show(" Preencha todos os campos obrigatórios! ( * )");
+                return false;
+            }
+            return true;
+        }
         private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
@@ -89,24 +136,6 @@ namespace ComercialOn
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             
-        }
-
-        private void listarTodos_Click(object sender, EventArgs e)
-        {
-            var clientes = Cliente.ListarTodos();
-            listaClientes.Items.Clear();
-            foreach (var item in clientes)
-            {
-                foreach (var endereco in item.Enderecos)
-                {
-                    listaClientes.Items.Add(
-                            item.Id + " - " +
-                            item.Nome + " - " +
-                            endereco.Logradouro
-                        );
-                }
-
-            }
         }
 
         private void listaClientes_SelectedIndexChanged(object sender, EventArgs e)
@@ -210,6 +239,7 @@ namespace ComercialOn
             if (cliente.Alterar())
             {
                 MessageBox.Show("Cliente atualizado com sucesso!");
+                btnListarClientes_Click(sender, e);
             }
             else
             {
@@ -228,6 +258,85 @@ namespace ComercialOn
                 e.SuppressKeyPress = true;
             }
 
+        }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtIdBuscarCliente_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnListarClientes_Click(object sender, EventArgs e)
+        {
+            FrmListaClientes frmListaCliente = new FrmListaClientes();
+            //frmCliente.Show();// exibe janela externa
+            frmListaCliente.Show();
+        }
+
+        private void btnCancelarCliente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCep_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCidade_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkCadastroEndereco_CheckedChanged(object sender, EventArgs e)
+        {
+            
+            if (chkCadastroEndereco.Checked == true)
+            {
+                exibeEndereco();
+            }
+            else
+            {
+                escondeEndereco();
+            }
+        }
+
+        private void exibeEndereco()
+        {
+            gpbEndereco.Visible = true;
+        }
+        private void escondeEndereco()
+        {
+            gpbEndereco.Visible = false;
         }
     }
 }
