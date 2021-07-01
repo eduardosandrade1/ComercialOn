@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -40,6 +41,7 @@ namespace ComercialOn.Classes
         public string Senha { get; set; }
         public string Nivel { get; set; }
         public string Situacao { get; set; }
+        public string Cpf { get; set; }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////// CONSTRUTORES ///////////////////////////////////////////////
@@ -50,7 +52,7 @@ namespace ComercialOn.Classes
         {
         }
         // método construtor com id
-        public Usuario(int id, string nome, string email, string senha, string nivel, string situacao)
+        public Usuario(int id, string nome, string email, string senha, string nivel, string situacao, string cpf)
         {
             Id = id;
             Nome = nome;
@@ -58,15 +60,17 @@ namespace ComercialOn.Classes
             Senha = senha;
             Nivel = nivel;
             Situacao = situacao;
+            Cpf = cpf;
         }
         // método construtor sem id
-        public Usuario(string nome, string email, string senha, string nivel, string situacao)
+        public Usuario(string nome, string email, string senha, string nivel, string situacao, string cpf)
         {
             Nome = nome;
             Email = email;
             Senha = senha;
             Nivel = nivel;
             Situacao = situacao;
+            Cpf = cpf;
         }
 
 
@@ -74,15 +78,37 @@ namespace ComercialOn.Classes
         ///////////////////////////////////// MÉTODOS ////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public int Inserir()
+        public void Inserir()
         {
-            // inseree e retorna o id inserido
-            return 1;
+            // insere e retorna o id inserido
+            var banco = Banco.Abrir();
+            MD5 md5Hash = MD5.Create();
+            banco.CommandText = "INSERT usuarios VALUES (null,'"+Nome+"', '"+Email+"', '"+Senha+"', '"+Nivel+"' , '"+Situacao+"', '"+Cpf+"');";
+            banco.ExecuteNonQuery();
+            banco.CommandText = @"select @@identity";
+
+            // retorna o id na propiedade da classe
+            Id = Convert.ToInt32(banco.ExecuteScalar());
         }
 
-        public List<Usuario> ListarTodos()
+        public static List<Usuario> ListarTodos()
         {
             List<Usuario> usuarios = new List<Usuario>();
+            var banco = Banco.Abrir();
+            banco.CommandText = "SELECT * FROM usuarios";
+            var lendoDados = banco.ExecuteReader();
+            while (lendoDados.Read())
+            {
+                usuarios.Add(new Usuario(
+                        lendoDados.GetInt32("id"),
+                        lendoDados.GetString("nome"),
+                        lendoDados.GetString("email"),
+                        lendoDados.GetString("senha"),
+                        lendoDados.GetString("nivel"),
+                        lendoDados.GetString("ativo"),
+                        lendoDados.GetString("cpf")
+                    ));
+            }
             return usuarios;
         }
 
@@ -96,5 +122,25 @@ namespace ComercialOn.Classes
             // não retorna valor
         }
 
+        public static List<Usuario > buscarPorCpf(string cpf)
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+            var banco = Banco.Abrir();
+            banco.CommandText = "select * from usuarios where cpf like '%"+cpf+"%';";
+            var lendoDados = banco.ExecuteReader();
+            while (lendoDados.Read())
+            {
+                usuarios.Add(new Usuario(
+                    lendoDados.GetInt32("id"),
+                    lendoDados.GetString("nome"),
+                    lendoDados.GetString("email"),
+                    lendoDados.GetString("senha"),
+                    lendoDados.GetString("nivel"),
+                    lendoDados.GetString("ativo"),
+                    lendoDados.GetString("cpf")
+                ));
+            }
+            return usuarios;
+        }
     }
 }

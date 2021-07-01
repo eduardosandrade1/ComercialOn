@@ -34,6 +34,8 @@
             this.tsmCadastroProdutos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCadastroProdutosNovo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCadastroProdutosLista = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCadastroUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.tsnOperacoes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsnMovimento = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,8 +45,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrincipal.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -98,21 +98,37 @@
             // tsmCadastroProdutosNovo
             // 
             this.tsmCadastroProdutosNovo.Name = "tsmCadastroProdutosNovo";
-            this.tsmCadastroProdutosNovo.Size = new System.Drawing.Size(180, 22);
+            this.tsmCadastroProdutosNovo.Size = new System.Drawing.Size(130, 22);
             this.tsmCadastroProdutosNovo.Text = "&Novo";
             this.tsmCadastroProdutosNovo.Click += new System.EventHandler(this.tsmCadastroProdutosNovo_Click);
             // 
             // tsmCadastroProdutosLista
             // 
             this.tsmCadastroProdutosLista.Name = "tsmCadastroProdutosLista";
-            this.tsmCadastroProdutosLista.Size = new System.Drawing.Size(180, 22);
+            this.tsmCadastroProdutosLista.Size = new System.Drawing.Size(130, 22);
             this.tsmCadastroProdutosLista.Text = "&Lista";
+            // 
+            // categoriasToolStripMenuItem
+            // 
+            this.categoriasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadastrarToolStripMenuItem});
+            this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
+            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.categoriasToolStripMenuItem.Text = "Categorias";
+            // 
+            // cadastrarToolStripMenuItem
+            // 
+            this.cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
+            this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.cadastrarToolStripMenuItem.Text = "Cadastrar";
+            this.cadastrarToolStripMenuItem.Click += new System.EventHandler(this.cadastrarToolStripMenuItem_Click);
             // 
             // tsmCadastroUsuarios
             // 
             this.tsmCadastroUsuarios.Name = "tsmCadastroUsuarios";
             this.tsmCadastroUsuarios.Size = new System.Drawing.Size(180, 22);
             this.tsmCadastroUsuarios.Text = "&Usuários";
+            this.tsmCadastroUsuarios.Click += new System.EventHandler(this.tsmCadastroUsuarios_Click);
             // 
             // tsnOperacoes
             // 
@@ -179,21 +195,6 @@
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(26, 20);
             this.closeToolStripMenuItem.Text = "X";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
-            // 
-            // categoriasToolStripMenuItem
-            // 
-            this.categoriasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cadastrarToolStripMenuItem});
-            this.categoriasToolStripMenuItem.Name = "categoriasToolStripMenuItem";
-            this.categoriasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.categoriasToolStripMenuItem.Text = "Categorias";
-            // 
-            // cadastrarToolStripMenuItem
-            // 
-            this.cadastrarToolStripMenuItem.Name = "cadastrarToolStripMenuItem";
-            this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.cadastrarToolStripMenuItem.Text = "Cadastrar";
-            this.cadastrarToolStripMenuItem.Click += new System.EventHandler(this.cadastrarToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 

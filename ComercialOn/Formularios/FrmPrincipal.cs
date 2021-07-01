@@ -59,5 +59,12 @@ namespace ComercialOn.Formularios
             frmCategoria.MdiParent = this;
             frmCategoria.Show();
         }
+
+        private void tsmCadastroUsuarios_Click(object sender, EventArgs e)
+        {
+            FrmUsuarios frmUsuarios = new FrmUsuarios();
+            frmUsuarios.MdiParent = this;
+            frmUsuarios.Show();
+        }
     }
 }
