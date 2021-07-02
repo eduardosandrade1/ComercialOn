@@ -8,7 +8,7 @@ namespace ComercialOn.Classes
         /*
          * propriedade da classe
          * 
-         * id, descricao, preco, desconto, descontinuado
+         * id, descricao, ValorUnitario, desconto, descontinuado
          * 
          * 
          * MÉTODOS DA CLASSE
@@ -22,59 +22,81 @@ namespace ComercialOn.Classes
         //////////////////////////////////////////////////////////////////////////////////////////////////
         public int Id { get; set; }
         public string Descricao { get; set; }
-        public double Preco { get; set; }
+        public double ValorUnitario { get; set; }
+        public string UnidadeVenda { get; set; }
+        public string CodBar { get; set; }
         public double Desconto { get; set; }
         public bool Descontinuado { get; set; }
+        public Marca Marca { get; set; }
+        public Categoria Categoria { get; set; }
+
 
         //////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////// CONSTRUTORES ///////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////
-        
-        // contrutor vazio
-        public Produto()
-        {
-        }
-        // contrutor com id
-        public Produto(int id, string descricao, double preco, double desconto, bool descontinuado)
+
+        public Produto(int id, string descricao, double valorUnitario, string unidadeVenda, string codBar, double desconto, bool descontinuado, Marca marca, Categoria categoria)
         {
             Id = id;
             Descricao = descricao;
-            Preco = preco;
+            ValorUnitario = valorUnitario;
+            UnidadeVenda = unidadeVenda;
+            CodBar = codBar;
             Desconto = desconto;
             Descontinuado = descontinuado;
+            Marca = marca;
+            Categoria = categoria;
         }
-        // contrutor sem id
-        public Produto(string descricao, double preco, double desconto, bool descontinuado)
+
+        public Produto(string descricao, double valorUnitario, string unidadeVenda, string codBar, double desconto, bool descontinuado, Marca marca, Categoria categoria)
         {
             Descricao = descricao;
-            Preco = preco;
+            ValorUnitario = valorUnitario;
+            UnidadeVenda = unidadeVenda;
+            CodBar = codBar;
             Desconto = desconto;
             Descontinuado = descontinuado;
+            Marca = marca;
+            Categoria = categoria;
+        }
+
+        public Produto()
+        {
         }
         //////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////// MÉTODOS ////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////
-
-        public int Inserir()
+        public void Inserir()
         {
-            return 1;
+            var banco = Banco.Abrir();
+            banco.CommandText = "INSERT produtos VALUES(null,'"+Descricao+"')";
         }
 
-        public List<Produto> ListarTodos()
+        public static List<Produto> GetProdutos()
         {
             List<Produto> produtos = new List<Produto>();
+
             return produtos;
         }
 
         public bool Aterar(int id)
         {
+            var banco = Banco.Abrir();
+            
             return true;
         }
-
-        public void BuscarPorId()
+        // busca uma lista por id
+        public List<Produto> GetById()
         {
-            // não retorna valor
-        }
+            List<Produto> produtos = new List<Produto>();
 
+
+            return produtos;
+        }
+        public List<Produto> GetByCodeBar()
+        {
+            List<Produto> produtos = new List<Produto>();
+            return produtos;
+        }
     }
 }
