@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ComercialOn.Classes;
 
 namespace ComercialOn.Formularios
 {
@@ -15,6 +16,23 @@ namespace ComercialOn.Formularios
         public FrmPedidos()
         {
             InitializeComponent();
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            Cliente clientes = new Cliente();
+            clientes.GetByCpf(txtCPF.Text);
+
+            dgvCliente.Rows.Clear();
+            foreach (var item in clientes)
+            {
+                dgvCliente.Rows.Add();
+
+                dgvCliente.Rows[dgvCliente.Rows.Count - 1].Cells[0].Value = item.Id;
+                dgvCliente.Rows[dgvCliente.Rows.Count - 1].Cells[1].Value = item.Nome;
+                dgvCliente.Rows[dgvCliente.Rows.Count - 1].Cells[2].Value = item.Cpf;
+                dgvCliente.Rows[dgvCliente.Rows.Count - 1].Cells[3].Value = item.Email;
+            }
         }
     }
 }

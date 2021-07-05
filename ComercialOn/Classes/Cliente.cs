@@ -131,5 +131,22 @@ namespace ComercialOn.Classes
                 Enderecos = Endereco.ListaEnderecos(id);
             }
         }
+        public void GetByCpf(string cpf)
+        {
+            string querySql = "SELECT * FROM clientes WHERE cpf LIKE '%" + cpf + "%'";
+            var banco = Banco.Abrir();
+            banco.CommandText = querySql;
+            var lendoDados = banco.ExecuteReader();
+
+            while (lendoDados.Read())
+            {
+                Id = lendoDados.GetInt32("id");
+                Nome = lendoDados.GetString("nome");
+                Email = lendoDados.GetString("Email");
+                Cpf = lendoDados.GetString("cpf");
+                Telefone = lendoDados.GetString("telefone");
+                Ativo = lendoDados.GetBoolean("ativo");
+            }
+        }
     }
 }

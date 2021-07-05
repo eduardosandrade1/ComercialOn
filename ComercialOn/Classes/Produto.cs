@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace ComercialOn.Classes
 {
@@ -27,15 +29,15 @@ namespace ComercialOn.Classes
         public string CodBar { get; set; }
         public double Desconto { get; set; }
         public bool Descontinuado { get; set; }
-        public Marca Marca { get; set; }
-        public Categoria Categoria { get; set; }
-
+        public int Marca { get; set; }
+        public int Categoria { get; set; }
+        public int Status { get; set; }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////// CONSTRUTORES ///////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public Produto(int id, string descricao, double valorUnitario, string unidadeVenda, string codBar, double desconto, bool descontinuado, Marca marca, Categoria categoria)
+        public Produto(int id, string descricao, double valorUnitario, string unidadeVenda, string codBar, double desconto, bool descontinuado, int marca, int categoria, int status)
         {
             Id = id;
             Descricao = descricao;
@@ -46,9 +48,10 @@ namespace ComercialOn.Classes
             Descontinuado = descontinuado;
             Marca = marca;
             Categoria = categoria;
+            Status = status;
         }
 
-        public Produto(string descricao, double valorUnitario, string unidadeVenda, string codBar, double desconto, bool descontinuado, Marca marca, Categoria categoria)
+        public Produto(string descricao, double valorUnitario, string unidadeVenda, string codBar, double desconto, bool descontinuado, int marca, int categoria, int status)
         {
             Descricao = descricao;
             ValorUnitario = valorUnitario;
@@ -58,6 +61,7 @@ namespace ComercialOn.Classes
             Descontinuado = descontinuado;
             Marca = marca;
             Categoria = categoria;
+            Status = status;
         }
 
         public Produto()
@@ -69,13 +73,30 @@ namespace ComercialOn.Classes
         public void Inserir()
         {
             var banco = Banco.Abrir();
-            banco.CommandText = "INSERT produtos VALUES(null,'"+Descricao+"')";
+            banco.CommandText = "INSERT produtos VALUES(null,'"+Descricao+"', '"+ValorUnitario+"','"+UnidadeVenda+"','"+CodBar+"','"+Desconto+"','"+Marca+"','"+Categoria+"','"+Status+"')";
+            banco.ExecuteNonQuery();
         }
 
         public static List<Produto> GetProdutos()
         {
             List<Produto> produtos = new List<Produto>();
-
+            var banco = Banco.Abrir();
+            banco.CommandText = "SELECT * FROM produtos";
+            var lendoDados = banco.ExecuteReader();
+            //while (lendoDados.Read())
+            //{
+            //    produtos.Add(new Produto(
+            //        lendoDados.GetInt32("id"),
+            //        lendoDados.GetString("descricao"),
+            //        lendoDados.GetDouble("valor_unitario"),
+            //        lendoDados.GetString("unidade_venda"),
+            //        lendoDados.GetString("cod_bar"),
+            //        lendoDados.GetDouble("desconto"),
+            //        lendoDados.GetBoolean("status"),
+            //        Marca.ListarPorId(Convert.ToInt32(lendoDados.GetInt32("Marcas_id"))),
+            //        Categoria.listarPorId(lendoDados.GetInt32("Categorias_id"))
+            //        )) ;
+            //}
             return produtos;
         }
 
@@ -97,6 +118,38 @@ namespace ComercialOn.Classes
         {
             List<Produto> produtos = new List<Produto>();
             return produtos;
+        }
+        /// <summary>
+        /// Geta um código para identificar cada produto
+        /// </summary>
+        /// <returns></returns>
+        public string GerarCodeBar()
+        {
+            var code = alfanumericoAleatorio(6);
+            return code;
+        }
+        public int formatNumber(int num)
+        {
+            if (num < 10)
+            {
+                return int.Parse("0" + num);
+            }
+            return num;
+        }
+        /// <summary>
+        /// gera numeros aleatórios
+        /// </summary>
+        /// <param name="tamanho">tamanho de itens que deseja</param>
+        /// <returns></returns>
+        public string alfanumericoAleatorio(int tamanho)
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var random = new Random();
+            var result = new string(
+                Enumerable.Repeat(chars, tamanho)
+                          .Select(s => s[random.Next(s.Length)])
+                          .ToArray());
+            return result;
         }
     }
 }

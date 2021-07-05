@@ -41,6 +41,10 @@ namespace ComercialOn.Classes
             ItemPedidos = itemPedidos;
         }
 
+        public void Inserir()
+        {
+
+        }
 
     }
 }

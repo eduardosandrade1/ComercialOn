@@ -36,6 +36,8 @@
             this.tsmCadastroProdutosLista = new System.Windows.Forms.ToolStripMenuItem();
             this.categoriasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.marcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.novoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCadastroUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.tsnOperacoes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsnMovimento = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,6 +47,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.novoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrincipal.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -72,7 +76,8 @@
             this.tsnCadastros.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmCadastroClientes,
             this.tsmCadastroProdutos,
-            this.tsmCadastroUsuarios});
+            this.tsmCadastroUsuarios,
+            this.pedidosToolStripMenuItem});
             this.tsnCadastros.ForeColor = System.Drawing.Color.White;
             this.tsnCadastros.Name = "tsnCadastros";
             this.tsnCadastros.Size = new System.Drawing.Size(71, 20);
@@ -90,7 +95,8 @@
             this.tsmCadastroProdutos.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmCadastroProdutosNovo,
             this.tsmCadastroProdutosLista,
-            this.categoriasToolStripMenuItem});
+            this.categoriasToolStripMenuItem,
+            this.marcasToolStripMenuItem});
             this.tsmCadastroProdutos.Name = "tsmCadastroProdutos";
             this.tsmCadastroProdutos.Size = new System.Drawing.Size(180, 22);
             this.tsmCadastroProdutos.Text = "&Produtos";
@@ -122,6 +128,21 @@
             this.cadastrarToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.cadastrarToolStripMenuItem.Text = "Cadastrar";
             this.cadastrarToolStripMenuItem.Click += new System.EventHandler(this.cadastrarToolStripMenuItem_Click);
+            // 
+            // marcasToolStripMenuItem
+            // 
+            this.marcasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.novoToolStripMenuItem});
+            this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
+            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.marcasToolStripMenuItem.Text = "Marcas";
+            // 
+            // novoToolStripMenuItem
+            // 
+            this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
+            this.novoToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.novoToolStripMenuItem.Text = "Novo";
+            this.novoToolStripMenuItem.Click += new System.EventHandler(this.novoToolStripMenuItem_Click);
             // 
             // tsmCadastroUsuarios
             // 
@@ -196,6 +217,21 @@
             this.closeToolStripMenuItem.Text = "X";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
+            // pedidosToolStripMenuItem
+            // 
+            this.pedidosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.novoToolStripMenuItem1});
+            this.pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
+            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pedidosToolStripMenuItem.Text = "P&edidos";
+            // 
+            // novoToolStripMenuItem1
+            // 
+            this.novoToolStripMenuItem1.Name = "novoToolStripMenuItem1";
+            this.novoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.novoToolStripMenuItem1.Text = "&Novo";
+            this.novoToolStripMenuItem1.Click += new System.EventHandler(this.novoToolStripMenuItem1_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,5 +276,9 @@
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadastrarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem marcasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem novoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pedidosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem novoToolStripMenuItem1;
     }
 }

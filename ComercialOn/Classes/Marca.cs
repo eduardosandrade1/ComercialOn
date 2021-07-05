@@ -64,17 +64,22 @@ namespace ComercialOn.Classes
             return marcas;
         }
 
-        public static void ListarPorId(int id)
+        public static List<Marca> ListarPorId(int id)
         {
             var banco = Banco.Abrir();
+            List<Marca> lista = new List<Marca>();
+
             banco.CommandText = "SELECT * FROM marcas WHERE id = " + id;
             var lendoDados = banco.ExecuteReader();
             while (lendoDados.Read())
             {
-                //Id = lendoDados.GetInt32("id");
-                //Descricao = lendoDados.GetString("descricao");
-                //Abreviacao = lendoDados.GetString("abreviacao");
+                lista.Add(new Marca(
+                    lendoDados.GetInt32("id"),
+                    lendoDados.GetString("descricao"),
+                    lendoDados.GetString("abreviacao")
+                    ));
             }
+            return lista;
         }
 
         public bool Alterar()

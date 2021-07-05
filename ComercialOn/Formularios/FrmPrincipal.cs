@@ -66,5 +66,19 @@ namespace ComercialOn.Formularios
             frmUsuarios.MdiParent = this;
             frmUsuarios.Show();
         }
+
+        private void novoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmMarca frmMarca = new FrmMarca();
+            frmMarca.MdiParent = this;
+            frmMarca.Show();
+        }
+
+        private void novoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmPedidos frmPedidos = new FrmPedidos();
+            frmPedidos.MdiParent = this;
+            frmPedidos.Show();
+        }
     }
 }

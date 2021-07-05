@@ -140,6 +140,7 @@
             this.Controls.Add(this.txtNomeCategoria);
             this.Controls.Add(this.label1);
             this.Name = "FrmCategoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCategoria";
             this.ResumeLayout(false);
             this.PerformLayout();

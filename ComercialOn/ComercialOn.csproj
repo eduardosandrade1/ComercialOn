@@ -104,6 +104,7 @@
     <Compile Include="Classes\Produto.cs" />
     <Compile Include="Classes\Usuario.cs" />
     <Compile Include="Classes\Venda.cs" />
+    <Compile Include="Classes\Code39Fonts.cs" />
     <Compile Include="Formularios\FrmCadastrarUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,8 +176,14 @@
     <EmbeddedResource Include="Formularios\FrmMarca.resx">
       <DependentUpon>FrmMarca.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmPedidos.resx">
+      <DependentUpon>FrmPedidos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmProdutos.resx">
+      <DependentUpon>FrmProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmUsuarios.resx">
       <DependentUpon>FrmUsuarios.cs</DependentUpon>
@@ -190,6 +197,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Formularios\Code39r.ttf" />
     <None Include="modelo_comercial_in.mwb" />
     <None Include="modelo_comercial_in.mwb.bak" />
     <None Include="packages.config" />
